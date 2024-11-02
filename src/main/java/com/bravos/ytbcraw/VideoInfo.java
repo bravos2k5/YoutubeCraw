@@ -1,3 +1,5 @@
+package com.bravos.ytbcraw;
+
 import java.util.Map;
 
 public class VideoInfo {

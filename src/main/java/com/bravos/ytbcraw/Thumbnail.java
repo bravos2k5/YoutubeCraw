@@ -1,3 +1,5 @@
+package com.bravos.ytbcraw;
+
 public class Thumbnail {
 
     private String url;
