@@ -76,9 +76,12 @@ public class YtbService {
         url = url.replaceFirst("www\\.", "");
         url = url.replaceFirst("m\\.", "");
         if (url.startsWith("youtube.com/")) {
-            String result = url.substring(url.lastIndexOf("?v=") + 3, url.indexOf("&ab"));
-            if (result.length() != 11) return null;
-            return result;
+            try {
+                int cut = url.lastIndexOf("?v=") + 3;
+                return url.substring(cut, cut + 11);
+            } catch (Exception e) {
+                return null;
+            }
         }
         if (url.startsWith("youtu.be/")) {
             String result = url.substring("youtu.be/".length(), url.indexOf("?si"));
@@ -141,6 +144,10 @@ public class YtbService {
         public void setThumbnails(Map<String, Thumbnail> thumbnails) {
             this.thumbnails = thumbnails;
         }
+    }
+
+    public static void main(String[] args) {
+        System.out.println(new YtbService("AIzaSyCArjdIj3d8ykraLp2is6cOl4DmJDNYic4").convertUrlToVideoId("https://www.youtube.com/watch?v=5TlJtpytXtk&list=RD5TlJtpytXtk&start_radio=1&ab_channel=BlackBiOriginal"));
     }
 
 
