@@ -60,10 +60,9 @@ public class YtbService {
                     }
                 }
             }
-            System.err.println("Có lỗi xảy ra");
             return null;
         } catch (URISyntaxException | IOException e) {
-            System.err.println("Có lỗi xảy ra: " + e);
+            System.err.println("Error when call YTB API: " + e.getMessage());
             return null;
         }
     }
@@ -146,9 +145,6 @@ public class YtbService {
         }
     }
 
-    public static void main(String[] args) {
-        System.out.println(new YtbService("AIzaSyCArjdIj3d8ykraLp2is6cOl4DmJDNYic4").convertUrlToVideoId("https://www.youtube.com/watch?v=5TlJtpytXtk&list=RD5TlJtpytXtk&start_radio=1&ab_channel=BlackBiOriginal"));
-    }
 
 
 }
