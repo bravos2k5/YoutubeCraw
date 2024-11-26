@@ -68,24 +68,24 @@ public class YtbService {
     }
 
     public String convertUrlToVideoId(String url) {
-        if (url == null || url.isBlank()) {
-            return null;
-        }
-        url = url.replaceFirst("https://", "");
-        url = url.replaceFirst("www\\.", "");
-        url = url.replaceFirst("m\\.", "");
-        if (url.startsWith("youtube.com/")) {
-            try {
-                int cut = url.lastIndexOf("?v=") + 3;
-                return url.substring(cut, cut + 11);
-            } catch (Exception e) {
+        try {
+            if (url == null || url.isBlank()) {
                 return null;
             }
-        }
-        if (url.startsWith("youtu.be/")) {
-            String result = url.substring("youtu.be/".length(), url.indexOf("?si"));
-            if (result.length() != 11) return null;
-            return result;
+            url = url.replaceFirst("https://", "");
+            url = url.replaceFirst("www\\.", "");
+            url = url.replaceFirst("m\\.", "");
+            if (url.startsWith("youtube.com/")) {
+                int cut = url.lastIndexOf("?v=") + 3;
+                return url.substring(cut, cut + 11);
+            }
+            if (url.startsWith("youtu.be/")) {
+                String result = url.substring("youtu.be/".length(), url.indexOf("?si"));
+                if (result.length() != 11) return null;
+                return result;
+            }
+        } catch (Exception e) {
+            return null;
         }
         return null;
     }
